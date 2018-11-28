@@ -74,6 +74,8 @@ void getCallback(http_request request)
             {
                 answer["message"] = json::value::string(iter->second);
                 handled = true;
+
+                ucout << "Found message " << iter->second << " for hash: " << reqString << endl;
                 break;
             }
             else
@@ -119,7 +121,7 @@ void postCallback(http_request request)
 
                     if (iter == _stringEntries.end()) 
                     {
-                        wcout << L"New message add it to the map" << std::endl;
+                        ucout << reqString << " is a new message will add it to the map" << std::endl;
                         hash = getSha256Hash(reqString);
 
                         // add it to the map if not already there
